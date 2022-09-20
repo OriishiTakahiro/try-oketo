@@ -11,12 +11,6 @@ var (
 	podIP = ""
 )
 
-type (
-	ReqBody struct {
-		Date string
-	}
-)
-
 func main() {
 	podIP = os.Getenv("POD_IP")
 
