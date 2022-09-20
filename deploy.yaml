@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sample-deploy
+  name: sample-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-deploy-label
+  template:
+    metadata:
+      labels:
+        app: sample-deploy-label
+    spec:
+      containers:
+      - image: oriishitakahiro/try-okteto:latest
+        name: sample-app
+        env:
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
